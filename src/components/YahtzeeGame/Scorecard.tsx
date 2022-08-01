@@ -2,7 +2,6 @@ import {
   YahtzeeScorecard,
   YahtzeeScorecardValidated,
 } from '@/lib/yahtzee/types';
-import { UnstyledButton } from '@mantine/core';
 
 interface ScorecardProps {
   scorecard: YahtzeeScorecard;
@@ -33,18 +32,16 @@ function Scorecard({
               const score = scorecard[key as keyof YahtzeeScorecard];
               const scoreValidated = scorecardValidated[key as keyof YahtzeeScorecardValidated];
               return (
-                <UnstyledButton
-                  component="tr"
+                <tr
                   key={key}
-                  onClick={() => handleScore(key)}
                   style={{
-                    backgroundColor: scoreValidated && !score ? 'green' : '',
+                    backgroundColor: scoreValidated && !score ? 'green' : 'inherit',
                   }}
-                //   disabled={scoreValidated}
+                  onClick={() => handleScore(key)}
                 >
                   <td>{key}</td>
                   <td>{score != null ? score : ''}</td>
-                </UnstyledButton>
+                </tr>
               );
             })}
           </tbody>
