@@ -1,3 +1,5 @@
+import { KeyString } from '@/types/index';
+
 // validation
 export const NUM_REQ_FOR_UPPER = 3;
 export const THREE_OF_A_KIND = 3;
@@ -18,14 +20,7 @@ export const REQUIRED_BONUS_SCORE = 63;
 // allowedScores and AllowedScore must both be initiated
 // 1. to allow to use with typescript
 // 2. Allow normal array function ssuch as includes
-export const uppers = [
-  'ones',
-  'twos',
-  'threes',
-  'fours',
-  'fives',
-  'sixes',
-];
+export const uppers = ['ones', 'twos', 'threes', 'fours', 'fives', 'sixes'];
 
 export const lowers = [
   'threeOfAKind',
@@ -61,3 +56,23 @@ export const derivativesType = [
   'lowerTotal',
   'grandTotal',
 ] as const;
+
+export const displayScores: KeyString<string> = {
+  ones: 'Ones',
+  twos: 'Twos',
+  threes: 'Threes',
+  fours: 'Fours',
+  fives: 'Fives',
+  sixes: 'Sixes',
+  threeOfAKind: 'Three of a Kind',
+  fourOfAKind: 'Four of a Kind',
+  fullHouse: 'Full House',
+  smallStraight: 'Small Straight',
+  largeStraight: 'Large Straight',
+  chance: 'Chance',
+  yahtzee: 'Yahtzee',
+  bonus: 'Bonus',
+  upperTotal: 'Upper Total',
+  lowerTotal: 'Lower Total',
+  grandTotal: 'Grand Total',
+};

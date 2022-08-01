@@ -1,7 +1,11 @@
+import { displayScores } from '@/lib/yahtzee/constants';
 import {
   YahtzeeScorecard,
   YahtzeeScorecardValidated,
 } from '@/lib/yahtzee/types';
+import {
+  Center, Stack, Table, Title,
+} from '@mantine/core';
 
 interface ScorecardProps {
   scorecard: YahtzeeScorecard;
@@ -14,40 +18,41 @@ function Scorecard({
   scorecardValidated,
   handleScore,
 }: ScorecardProps) {
+  const rows = Object.keys(scorecard).map((key) => {
+    const score = scorecard[key as keyof YahtzeeScorecard];
+    const scoreValidated = scorecardValidated[key as keyof YahtzeeScorecardValidated];
+    return (
+      <tr
+        key={key}
+        style={{
+          backgroundColor: scoreValidated && !score ? 'green' : 'inherit',
+          cursor: score === null ? 'pointer' : 'default',
+        }}
+        onClick={() => handleScore(key)}
+      >
+        <td>{displayScores[key]}</td>
+        <td>{score != null ? score : ''}</td>
+      </tr>
+    );
+  });
+
   return (
-    <div>
-      <div>
-        <h1>Scorecard</h1>
-      </div>
-      <div>
-        <table>
+    <Stack>
+      <Center>
+        <Title>Scorecard</Title>
+      </Center>
+      <Stack>
+        <Table>
           <thead>
             <tr>
               <th>Category</th>
               <th>Score</th>
             </tr>
           </thead>
-          <tbody>
-            {Object.keys(scorecard).map((key) => {
-              const score = scorecard[key as keyof YahtzeeScorecard];
-              const scoreValidated = scorecardValidated[key as keyof YahtzeeScorecardValidated];
-              return (
-                <tr
-                  key={key}
-                  style={{
-                    backgroundColor: scoreValidated && !score ? 'green' : 'inherit',
-                  }}
-                  onClick={() => handleScore(key)}
-                >
-                  <td>{key}</td>
-                  <td>{score != null ? score : ''}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-    </div>
+          <tbody>{rows}</tbody>
+        </Table>
+      </Stack>
+    </Stack>
   );
 }
 
