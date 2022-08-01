@@ -4,10 +4,10 @@ import { Card, Stack, Center } from '@mantine/core';
 import type { NextPage } from 'next';
 
 const Home: NextPage = () => (
-  <Center style={{ minHeight: '100%' }}>
+  <Center style={{ minHeight: '100vh' }}>
+    <ColorSchemeToggle />
     <Card radius="md" shadow="md" withBorder>
       <Stack align="center">
-        <ColorSchemeToggle />
         <YahtzeeGame />
       </Stack>
     </Card>

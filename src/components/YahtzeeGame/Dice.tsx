@@ -12,8 +12,8 @@ const useStyles = createStyles((theme) => ({
     width: '100px',
     height: '100px',
     borderRadius: '1px',
-    border: `1px solid ${theme.colorScheme === 'dark' ? '#fff' : '#000'}`,
-    backgroundColor: theme.colorScheme === 'dark' ? '#ffffff' : '#000',
+    border: '1px solid #000',
+    backgroundColor: '#fff',
     fontSize: '3rem',
     fontWeight: 'bold',
     color: theme.colorScheme === 'dark' ? '#000' : '#fff',
@@ -25,7 +25,7 @@ const useStyles = createStyles((theme) => ({
 
 const diceColors = {
   dark: ['#ffffff', '#000000'],
-  light: ['#000000', '#ffffff'],
+  light: ['#ffffff', '#000000'],
 };
 
 function Dice({ dice, selectedDice, handleSelect }: DiceProps) {
