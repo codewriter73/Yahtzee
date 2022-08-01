@@ -111,9 +111,9 @@ export default function useYahtzee() {
       [scoreType]: newScore,
     };
     const bonus = getBonus(newScorecard);
-    const upperTotal = getUpperSum(newScorecard);
+    const upperTotal = getUpperSum(newScorecard) + bonus;
     const lowerTotal = getLowerSum(newScorecard);
-    const grandTotal = upperTotal + lowerTotal + bonus;
+    const grandTotal = upperTotal + lowerTotal;
     newScorecard = {
       ...newScorecard,
       bonus,

@@ -65,7 +65,6 @@ export function getUpperSum(scorecard: YahtzeeScorecard) {
       sum += scorecard[upper] as number;
     }
   });
-  sum += scorecard.bonus ? scorecard.bonus : 0;
   return sum;
 }
 
