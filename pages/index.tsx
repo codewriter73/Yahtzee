@@ -4,7 +4,7 @@ import { Card, Stack, Center } from '@mantine/core';
 import type { NextPage } from 'next';
 
 const Home: NextPage = () => (
-  <Center style={{ minHeight: '100vh' }}>
+  <Center style={{ minHeight: '100' }}>
     <ColorSchemeToggle />
     <Card radius="md" shadow="md" withBorder>
       <Stack align="center">

@@ -1,4 +1,4 @@
-import { displayScores } from '@/lib/yahtzee/constants';
+import { derivatives, displayScores } from '@/lib/yahtzee/constants';
 import {
   YahtzeeScorecard,
   YahtzeeScorecardValidated,
@@ -25,12 +25,14 @@ function Scorecard({
       <tr
         key={key}
         style={{
-          backgroundColor: scoreValidated && !score ? 'green' : 'inherit',
+          backgroundColor: scoreValidated && !score ? 'rgba(0, 256, 0, 0.4)' : 'inherit',
           cursor: score === null ? 'pointer' : 'default',
         }}
         onClick={() => handleScore(key)}
       >
-        <td>{displayScores[key]}</td>
+        <td style={{
+          fontWeight: derivatives.includes(key) ? 'bold' : 'normal',
+        }}>{displayScores[key]}</td>
         <td>{score != null ? score : ''}</td>
       </tr>
     );

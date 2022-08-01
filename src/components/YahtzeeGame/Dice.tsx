@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import { DiceObject } from '@/lib/dice';
 import { createStyles, Group, UnstyledButton } from '@mantine/core';
 
@@ -7,32 +8,25 @@ interface DiceProps {
   handleSelect: (_k: string) => void;
 }
 
-const useStyles = createStyles((theme) => ({
+const useStyles = createStyles(() => ({
   diceButton: {
     width: '100px',
     height: '100px',
     borderRadius: '1px',
     border: '1px solid #000',
-    backgroundColor: '#fff',
     fontSize: '3rem',
     fontWeight: 'bold',
-    color: theme.colorScheme === 'dark' ? '#000' : '#fff',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
   },
 }));
 
-const diceColors = {
-  dark: ['#ffffff', '#000000'],
-  light: ['#ffffff', '#000000'],
-};
-
 function Dice({ dice, selectedDice, handleSelect }: DiceProps) {
   const { classes } = useStyles();
 
   const diceButtons = Object.entries(dice).map(([k, v]) => {
-    const active = selectedDice.includes(k) ? 1 : 0;
+    const active = selectedDice.includes(k);
     return (
       <UnstyledButton
         className={classes.diceButton}
@@ -41,12 +35,13 @@ function Dice({ dice, selectedDice, handleSelect }: DiceProps) {
         sx={(theme) => ({
           backgroundColor:
             theme.colorScheme === 'dark'
-              ? diceColors.dark[active]
-              : diceColors.light[active],
-          color:
-            theme.colorScheme === 'dark'
-              ? diceColors.dark[active === 1 ? 0 : 1]
-              : diceColors.light[active === 1 ? 0 : 1],
+              ? active
+                ? 'rgba(0, 0, 0, 0.7)'
+                : theme.colors.gray[4]
+              : active
+                ? theme.colors.gray[9]
+                : 'white',
+          color: active ? 'white' : 'black',
         })}
       >
         {v}

@@ -50,6 +50,8 @@ export const allowedScoresType = [
   'yahtzee',
 ] as const;
 
+export const derivatives = ['bonus', 'upperTotal', 'lowerTotal', 'grandTotal'];
+
 export const derivativesType = [
   'bonus',
   'upperTotal',

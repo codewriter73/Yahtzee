@@ -1,5 +1,7 @@
 import { AllowedScores, useYahtzee } from '@/lib/yahtzee';
-import { Card, Group, Stack } from '@mantine/core';
+import {
+  Card, Group, Stack, Title,
+} from '@mantine/core';
 import { useState } from 'react';
 import Control from './Controls';
 import Dice from './Dice';
@@ -47,14 +49,18 @@ function YahtzeeGame() {
   return (
     <Card>
       <Group>
-        <Stack align="center">
-          <Info rollNumber={rollNumber} message={message} />
-          <Dice
-            dice={dice}
-            selectedDice={selectedDice}
-            handleSelect={handleDiceSelection}
-          />
-          <Control handleRoll={handleRoll} handleNewGame={handleNewGame} />
+        <Stack style={{ height: '80vh' }} justify="space-between" align="center">
+          <Title style={{ fontSize: '5rem' }}>Yahtzee</Title>
+          <Stack align="center">
+            <Info rollNumber={rollNumber} message={message} />
+            <Dice
+              dice={dice}
+              selectedDice={selectedDice}
+              handleSelect={handleDiceSelection}
+            />
+            <Control handleRoll={handleRoll} handleNewGame={handleNewGame} />
+          </Stack>
+          <div>&nbsp;</div>
         </Stack>
         <Scorecard
           scorecard={scorecard}
