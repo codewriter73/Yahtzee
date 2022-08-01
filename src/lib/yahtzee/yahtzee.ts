@@ -6,7 +6,7 @@ import {
   diceObjectToDice,
   rollDice,
 } from '@/lib/dice';
-import { DICE_COUNT, NUM_OF_ROLLS } from './constants';
+import { DICE_COUNT, NUM_OF_ROLLS, uppers } from './constants';
 import {
   checkIfFinished,
   getBonus,
@@ -103,7 +103,7 @@ export default function useYahtzee() {
       return;
     }
     let newScore = 0;
-    if (scorecardValidated[scoreType]) {
+    if (scorecardValidated[scoreType] || uppers.includes(scoreType)) {
       newScore = scoreMove[scoreType](diceObjectToDice(dice));
     }
     let newScorecard: YahtzeeScorecard = {
